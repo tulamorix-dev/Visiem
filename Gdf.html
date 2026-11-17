@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<title>RimWorld — Поселенец Кай: движение и экипировка</title>
+<style>
+  :root{
+    --bg:#1b1f24; --panel:#252b33; --line:#3a424d;
+    --text:#e6e9ee; --muted:#9aa4b2;
+    --fast:#3ddc84; --heavy:#ffb347; --accent:#5aa9ff;
+  }
+  *{box-sizing:border-box}
+  body{
+    margin:0; padding:24px;
+    font-family:system-ui,Segoe UI,Roboto,sans-serif;
+    background:var(--bg); color:var(--text);
+  }
+  h1{font-size:20px;margin:0 0 4px}
+  .sub{color:var(--muted);font-size:13px;margin-bottom:24px}
+  .grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+  @media(max-width:820px){.grid{grid-template-columns:1fr}}
+
+  .card{
+    background:var(--panel);border:1px solid var(--line);
+    border-radius:12px;padding:18px;
+  }
+  .card h2{margin:0 0 4px;font-size:16px;display:flex;gap:8px;align-items:center}
+  .badge{
+    font-size:11px;padding:2px 8px;border-radius:999px;
+    border:1px solid var(--line);color:var(--muted);
+  }
+  .badge.fast{border-color:var(--fast);color:var(--fast)}
+  .badge.heavy{border-color:var(--heavy);color:var(--heavy)}
+
+  .row{display:flex;justify-content:space-between;
+    padding:6px 0;border-bottom:1px dashed var(--line);font-size:14px}
+  .row:last-child{border-bottom:none}
+  .row span:first-child{color:var(--muted)}
+  .row span:last-child{text-align:right}
+
+  /* полоса движения */
+  .track{
+    position:relative;height:56px;margin:14px 0;
+    background:repeating-linear-gradient(90deg,#2f3640 0 22px,#252b33 22px 44px);
+    border-radius:8px;overflow:hidden;
+  }
+  .walker{
+    position:absolute;top:50%;transform:translateY(-50%);
+    font-size:26px;
+  }
+  .walker.fast{animation:walk 3.2s linear infinite}
+  .walker.heavy{animation:walk 5s linear infinite}
+  @keyframes walk{
+    from{left:-40px}
+    to{left:100%}
+  }
+  .speed{
+    font-size:12px;color:var(--muted);margin-top:-6px;
+  }
+  .speed b{color:var(--text)}
+</style>
+</head>
+<body>
+
+  <h1>Поселенец «Кай»</h1>
+  <div class="sub">Пример движения и экипировки — RimWorld (ваниль)</div>
+
+  <div class="grid">
+
+    <!-- ВАРИАНТ A -->
+    <div class="card">
+      <h2>🟢 Быстрый пеший рейдер <span class="badge fast">Jogger</span></h2>
+      <div class="row"><span>Трейты</span><span>Jogger + Nimble</span></div>
+      <div class="row"><span>Ноги</span><span>bionic leg ×2</span></div>
+      <div class="row"><span>Броня</span><span>flak vest / pants / helmet</span></div>
+      <div class="row"><span>Верх</span><span>duster</span></div>
+      <div class="row"><span>Оружие</span><span>assault rifle</span></div>
+      <div class="row"><span>В пути</span><span>medicine · pemmican · bedroll</span></div>
+
+      <div class="track"><div class="walker fast">🏃</div></div>
+      <div class="speed">Скорость: <b>~6.0 клеток/с</b> (+30–35%) — караван, кайт, подмога по базе.</div>
+    </div>
+
+    <!-- ВАРИАНТ B -->
+    <div class="card">
+      <h2>🟠 Тяжёлый штурмовик <span class="badge heavy">Tough</span></h2>
+      <div class="row"><span>Трейты</span><span>Tough + Brawler</span></div>
+      <div class="row"><span>Ноги</span><span>обычные</span></div>
+      <div class="row"><span>Броня</span><span>cataphract armor + helmet</span></div>
+      <div class="row"><span>Щит</span><span>shield belt</span></div>
+      <div class="row"><span>Оружие</span><span>plasteel longsword</span></div>
+      <div class="row"><span>В пути</span><span>medicine · go-juice · pemmican</span></div>
+
+      <div class="track"><div class="walker heavy">🛡️</div></div>
+      <div class="speed">Скорость: <b>~4.6 клеток/с</b> — базовая, держит дверь и коридор.</div>
+    </div>
+
+  </div>
+
+</body>
+</html>
